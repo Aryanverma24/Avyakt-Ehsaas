@@ -70,22 +70,22 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-16 bg-gradient-to-b from-white to-softLavender px-6">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-deepGreen mb-8">
+    <section id="testimonials" className="py-12 sm:py-16 bg-gradient-to-b from-white to-softLavender px-4 sm:px-6">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-deepGreen mb-6 sm:mb-8">
         What Our Users Say
       </h2>
       <div className="max-w-6xl mx-auto">
         <Slider {...settings}>
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="px-2">
-              <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-xl p-6 border border-gray-200 hover:shadow-2xl hover:scale-105 transition-all duration-300 min-h-[220px] flex flex-col justify-between mb-9" >
+            <div key={index} className="px-2 sm:px-4">
+              <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-xl p-4 sm:p-6 border border-gray-200 hover:shadow-2xl hover:scale-105 transition-all duration-300 min-h-[200px] sm:min-h-[220px] flex flex-col justify-between mb-6 sm:mb-9" >
                 <div className="flex mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-yellow-400 text-lg">★</span>
+                    <span key={i} className="text-yellow-400 text-base sm:text-lg">★</span>
                   ))}
                 </div>
-                <p className="text-gray-700 mb-4 flex-grow">"{testimonial.text}"</p>
-                <p className="font-semibold text-deepGreen text-lg">- {testimonial.name}</p>
+                <p className="text-gray-700 mb-3 sm:mb-4 flex-grow text-sm sm:text-base">"{testimonial.text}"</p>
+                <p className="font-semibold text-deepGreen text-base sm:text-lg">- {testimonial.name}</p>
               </div>
             </div>
           ))}

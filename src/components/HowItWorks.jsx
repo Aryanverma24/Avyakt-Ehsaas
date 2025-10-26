@@ -33,12 +33,12 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className=" pb-6 bg-gradient-to-b from-indigo-50 to-purple-50 px-6">
+    <section id="how-it-works" className="py-12 bg-gradient-to-b from-indigo-50 to-purple-50 px-4 sm:px-6">
       <motion.h2
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-3xl md:text-4xl font-bold text-center text-deepGreen mb-12"
+        className="text-3xl md:text-4xl font-bold text-center text-deepGreen mb-8 sm:mb-12"
       >
         How It Works
       </motion.h2>
@@ -48,19 +48,23 @@ export default function HowItWorks() {
 
         <div className="space-y-12">
           {steps.map((step, index) => (
-            <div key={index} className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} group`}>
+            <div key={index} className={`flex items-center justify-center md:justify-start ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} group`}>
               {/* Timeline Dot */}
-              <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center text-white text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10`}>
+              <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center text-white text-xl sm:text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10 mx-auto md:mx-0 mb-4 md:mb-0 hidden md:flex`}>
                 {step.icon}
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-deepGreen text-white rounded-full flex items-center justify-center text-sm font-bold">
+                <div className="absolute -top-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-deepGreen text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold hidden md:flex">
                   {step.step}
                 </div>
               </div>
 
               {/* Content Card */}
-              <div className={`bg-white/90 backdrop-blur-lg rounded-2xl p-6 shadow-lg border border-slate-200 md:w-96 group-hover:shadow-xl transition-all duration-300 ${index % 2 === 0 ? 'md:ml-8' : 'md:mr-8'}`}>
-                <h3 className="text-xl font-semibold text-deepGreen mb-2">{step.title}</h3>
-                <p className="text-slate-600 text-sm">{step.description}</p>
+              <div className={`bg-white/90 backdrop-blur-lg rounded-2xl p-4 sm:p-6 shadow-lg border border-slate-200 md:w-96 group-hover:shadow-xl transition-all duration-300 w-full ${index % 2 === 0 ? 'md:ml-8' : 'md:mr-8'} flex flex-col items-center md:items-start`}>
+                <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center text-white text-xl sm:text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10 md:hidden mb-4`}>
+                  {step.icon}
+                  <div className="absolute -top-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-deepGreen text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold">{step.step}</div>
+                </div>
+                <h3 className="text-lg sm:text-xl font-semibold text-deepGreen mb-2">{step.title}</h3>
+                <p className="text-slate-600 text-sm sm:text-base">{step.description}</p>
               </div>
             </div>
           ))}
