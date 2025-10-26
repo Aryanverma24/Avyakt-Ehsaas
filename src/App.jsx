@@ -73,7 +73,7 @@ function App() {
             {/* Hero Section */}
             <section id="home" className="flex flex-col items-center justify-center text-center py-20 px-4 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 relative overflow-hidden pt-20">
               <div className="absolute inset-0 bg-black/20"></div>
-              <div className="absolute top-20 right-6 z-20">
+              <div className="fixed top-2 right-15 z-50 md:top-20 md:right-6">
                 <StreakTracker />
               </div>
               <div className="relative z-10">
