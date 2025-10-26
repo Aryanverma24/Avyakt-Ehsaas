@@ -8,7 +8,7 @@ const app = express();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Get client URL from environment or default to localhost
-const CLIENT_URL = process.env.CLIENT_URL || 'https://avyakt-ehsaas.onrender.com';
+const CLIENT_URL = process.env.CLIENT_URL || 'https://avyakt-ehsaas.onrender.com' || 'http://localhost:5173';
 const PORT = process.env.PORT || 10000; // Render uses port 10000
 
 app.use(cors({
