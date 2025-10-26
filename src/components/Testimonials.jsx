@@ -1,10 +1,13 @@
 import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const testimonials = [
   {
     name: 'Alice Johnson',
     text: 'This meditation app helped me reduce stress and improve my focus in just a week!',
-    rating: 5,
+    rating: 3,
   },
   {
     name: 'Bob Smith',
@@ -16,29 +19,77 @@ const testimonials = [
     text: 'Great course structure. Easy to follow and very effective.',
     rating: 4,
   },
+  {
+    name: 'David Lee',
+    text: 'The guided sessions are incredibly relaxing. I feel more balanced every day.',
+    rating: 5,
+  },
+  {
+    name: 'Emma Wilson',
+    text: 'Perfect for beginners. The breathing exercises changed my routine.',
+    rating: 5,
+  },
+  {
+    name: 'Frank Brown',
+    text: 'Highly recommend! The app is user-friendly and the content is top-notch.',
+    rating: 4,
+  },
+  {
+    name: 'Grace Miller',
+    text: 'After a month of use, my anxiety levels have dropped significantly.',
+    rating: 5,
+  },
 ];
 
 export default function Testimonials() {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <section id="testimonials" className="py-16 bg-gradient-to-b from-white to-softLavender px-6">
       <h2 className="text-3xl md:text-4xl font-bold text-center text-deepGreen mb-8">
         What Our Users Say
       </h2>
-      <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-lg shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow"
-          >
-            <div className="flex mb-4">
-              {[...Array(testimonial.rating)].map((_, i) => (
-                <span key={i} className="text-yellow-500">★</span>
-              ))}
+      <div className="max-w-6xl mx-auto">
+        <Slider {...settings}>
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="px-2">
+              <div className="bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-xl p-6 border border-gray-200 hover:shadow-2xl hover:scale-105 transition-all duration-300 min-h-[220px] flex flex-col justify-between mb-9" >
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <span key={i} className="text-yellow-400 text-lg">★</span>
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-4 flex-grow">"{testimonial.text}"</p>
+                <p className="font-semibold text-deepGreen text-lg">- {testimonial.name}</p>
+              </div>
             </div>
-            <p className="text-gray-700 mb-4">"{testimonial.text}"</p>
-            <p className="font-semibold text-deepGreen">- {testimonial.name}</p>
-          </div>
-        ))}
+          ))}
+        </Slider>
       </div>
     </section>
   );

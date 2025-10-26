@@ -22,10 +22,12 @@ export default function FocusTest({ phase, setPhase }) {
   const [category, setCategory] = useState('');
 
   const resetQuiz = () => {
+    if(userEmail === '') return alert('Please enter your email');
     setAnswers(Array(10).fill(3));
     setScore(0);
     setCategory('');
     setUserEmail('');
+    setPhase('quiz');
   };
 
   const handleChange = (index, value) => {
@@ -53,7 +55,7 @@ export default function FocusTest({ phase, setPhase }) {
 
   if (phase === 'email') {
     return (
-      <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl max-w-3xl mx-auto mt-16 p-8 border border-slate-200">
+      <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl max-w-3xl mx-auto mt-16 p-8 border border-slate-200 mb-10">
         <h2 className="text-3xl font-bold text-blue-700 text-center mb-6">Enter Your Email to Start</h2>
         <input
           type="email"
@@ -61,9 +63,10 @@ export default function FocusTest({ phase, setPhase }) {
           onChange={(e) => setUserEmail(e.target.value)}
           placeholder="your@email.com"
           className="w-full p-3 rounded-lg border border-slate-300 mb-4"
+          required
         />
         <button
-          onClick={() => { resetQuiz(); setPhase('quiz'); }}
+          onClick={() => { resetQuiz() }}
           className="w-full bg-gradient-to-r from-blue-500 to-teal-500 text-white py-3 rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg"
         >
           Start Quiz

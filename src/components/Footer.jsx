@@ -1,4 +1,7 @@
 import React from 'react';
+import { SlSocialInstagram , SlSocialTwitter ,SlSocialFacebook } from "react-icons/sl";
+
+
 
 export default function Footer() {
   return (
@@ -39,15 +42,15 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-slate-300 hover:text-white transition-colors">📘 Facebook</a>
-              <a href="#" className="text-slate-300 hover:text-white transition-colors">🐦 Twitter</a>
-              <a href="#" className="text-slate-300 hover:text-white transition-colors">📷 Instagram</a>
+              <a href="#" className="text-slate-300 hover:text-white transition-colors"><SlSocialFacebook /> Facebook</a>
+              <a href="#" className="text-slate-300 hover:text-white transition-colors"><SlSocialTwitter /> Twitter</a>
+              <a href="#" className="text-slate-300 hover:text-white transition-colors"><SlSocialInstagram /> Instagram</a>
             </div>
           </div>
         </div>
 
         <div className="border-t border-slate-700 mt-8 pt-8 text-center">
-          <p className="text-slate-300">&copy; 2023 Meditation App. All rights reserved.</p>
+          <p className="text-slate-300">&copy; 2025 Meditation App. All rights reserved.</p>
         </div>
       </div>
     </footer>
