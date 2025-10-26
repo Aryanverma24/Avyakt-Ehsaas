@@ -1,0 +1,27 @@
+{
+  "name": "meditation-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Meditation App",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build": "npm install"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "keywords": ["meditation", "api", "stripe", "nodejs"],
+  "author": "Aryan Verma",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "stripe": "^19.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

@@ -1,0 +1,21 @@
+# Render.com deployment configuration
+# This file helps Render understand how to deploy your Node.js backend
+
+# Build Command (install dependencies)
+buildCommand = "npm install"
+
+# Start Command (start the server)
+startCommand = "npm start"
+
+# Node.js version
+engines = { node = "18.x" }
+
+# Environment Variables (set these in Render dashboard)
+# STRIPE_SECRET_KEY=sk_live_your_live_key_here
+# CLIENT_URL=https://your-netlify-site.netlify.app
+# PORT=10000 (Render uses this port)
+# NODE_ENV=production
+# STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret_here
+
+# Health check path (optional)
+healthCheckPath = "/health"

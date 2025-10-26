@@ -1,0 +1,16 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "installCommand": "npm install",
+  "env": {
+    "VITE_STRIPE_PUBLISHABLE_KEY": "@vite-stripe-publishable-key",
+    "VITE_API_URL": "@vite-api-url"
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://your-backend-api-url.com/api/$1"
+    }
+  ]
+}

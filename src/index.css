@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+body {
+  @apply bg-gradient-to-br from-purple-100 via-pink-50 to-blue-100 text-slate-700 min-h-screen;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Additional serene styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
