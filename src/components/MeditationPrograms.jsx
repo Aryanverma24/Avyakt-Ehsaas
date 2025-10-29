@@ -1,4 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { useEffect } from 'react';
 import axios from 'axios';
 
 const programs = [
@@ -44,8 +46,34 @@ const programs = [
   },
 ];
 
-export default function MeditationPrograms() {
-  const handleEnroll = async (program) => {
+const ProgramCard = ({ program, index }) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
+  const variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+        delay: index * 0.1
+      }
+    }
+  };
+
+  const handleEnroll = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/create-checkout-session`, {
         courseName: program.title,
@@ -54,7 +82,7 @@ export default function MeditationPrograms() {
       });
 
       if (response.data.url) {
-        window.location.href = response.data.url; // redirect to Stripe checkout
+        window.location.href = response.data.url;
       }
     } catch (error) {
       console.error("Error creating checkout session:", error);
@@ -62,6 +90,37 @@ export default function MeditationPrograms() {
     }
   };
 
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={variants}
+      className="bg-white/90 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-slate-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group"
+    >
+      <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${program.color} flex items-center justify-center text-white text-3xl mb-4 mx-auto`}>
+        {program.icon}
+      </div>
+      <h3 className="text-xl font-semibold text-deepGreen mb-2 text-center">{program.title}</h3>
+      <p className="text-slate-600 text-center mb-4">{program.description}</p>
+      <div className="flex justify-between text-sm text-slate-500 mb-4">
+        <span>{program.duration}</span>
+        <span>{program.level}</span>
+      </div>
+      <div className="text-center mb-4">
+        <span className="text-2xl font-bold text-indigo-600">₹{program.price}</span>
+      </div>
+      <button
+        onClick={handleEnroll}
+        className="w-full py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:scale-105 transition-transform duration-300 font-medium"
+      >
+        Enroll Now
+      </button>
+    </motion.div>
+  );
+};
+
+export default function MeditationPrograms() {
   return (
     <section id="meditation-programs-section" className="meditation-programs-section py-6 bg-gradient-to-b from-purple-50 to-pink-50 px-6">
       <motion.h2
@@ -74,29 +133,7 @@ export default function MeditationPrograms() {
       </motion.h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
         {programs.map((program, index) => (
-          <div
-            key={index}
-            className="bg-white/90 backdrop-blur-lg rounded-2xl shadow-lg p-6 border border-slate-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group"
-          >
-            <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${program.color} flex items-center justify-center text-white text-3xl mb-4 mx-auto`}>
-              {program.icon}
-            </div>
-            <h3 className="text-xl font-semibold text-deepGreen mb-2 text-center">{program.title}</h3>
-            <p className="text-slate-600 text-center mb-4">{program.description}</p>
-            <div className="flex justify-between text-sm text-slate-500 mb-4">
-              <span>{program.duration}</span>
-              <span>{program.level}</span>
-            </div>
-            <div className="text-center mb-4">
-              <span className="text-2xl font-bold text-indigo-600">₹{program.price}</span>
-            </div>
-            <button
-              onClick={() => handleEnroll(program)}
-              className="w-full py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:scale-105 transition-transform duration-300 font-medium"
-            >
-              Enroll Now
-            </button>
-          </div>
+          <ProgramCard key={index} program={program} index={index} />
         ))}
       </div>
     </section>

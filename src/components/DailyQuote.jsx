@@ -43,8 +43,8 @@ export default function DailyQuote() {
 
   return (
     <div className="max-w-2xl mx-auto mt-8 p-6 bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 animate-pulse">
-      <h3 className="text-xl font-semibold text-white mb-2">🌟 Daily Affirmation</h3>
-      <p className="text-white/90 italic text-lg">"{dailyQuote}"</p>
+      <h3 className="text-xl font-semibold text-gray-800 mb-2">🌟 Daily Affirmation</h3>
+      <p className="text-gray/90 italic text-lg">"{dailyQuote}"</p>
     </div>
   );
 }

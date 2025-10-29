@@ -71,28 +71,35 @@ function App() {
             <Navbar />
 
             {/* Hero Section */}
-            <section id="home" className="flex flex-col items-center justify-center text-center py-20 px-4 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 relative overflow-hidden pt-20">
-              <div className="absolute inset-0 bg-black/20"></div>
-              <div className="fixed top-2 right-15 z-50 md:top-20 md:right-6">
+            <section 
+              id="home" 
+              className="flex flex-col items-center justify-center text-center py-24 px-4 relative overflow-hidden min-h-screen"
+              style={{
+              background: `linear-gradient(210deg, #FFE0B2 0%, #FFAB91 50%, #FF7043 100%)`,
+                backgroundAttachment: 'fixed',
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-white/40"></div>
+              <div className="fixed right-12 md:top-20 top-3 md:right-4 z-50 md:top-6 md:right-6">
                 <StreakTracker />
               </div>
-              <div className="relative z-10">
-                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-4 border border-white/20 mb-6 animate-pulse">
-                  <p className="text-sm text-white font-medium animate-bounce">
-                    🌿 Find Your Inner Peace
+              <div className="relative z-10 max-w-4xl mx-auto w-full px-4">
+                <div className="bg-white/30 backdrop-blur-sm rounded-2xl p-4 border border-white/30 mb-8 inline-block shadow-sm">
+                  <p className="text-sm text-gray-700 font-medium">
+                    🌱 Find Your Inner Peace
                   </p>
                 </div>
-                <h1 className="text-4xl mt-8 md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 mb-4 animate-pulse">
+                <h1 className="text-4xl mt-8 md:text-6xl font-bold text-gray-700 mb-4">
                   Discover Calm in Every Breath
                 </h1>
-                <p className="max-w-2xl text-white/90 mb-8 text-lg animate-fade-in">
+                <p className="max-w-2xl text-gray-600 mb-8 text-lg">
                   Transform your mind, reduce stress, and find balance through guided meditation.
                   Start your journey to mindfulness today.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                <div className="w-full flex flex-col sm:flex-row gap-4 mt-8 px-4 sm:px-0 items-center">
                   <button
                     onClick={() => setTestPhase('email')}
-                    className="px-8 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-black rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 animate-bounce"
+                    className="w-[70%] sm:w-auto md:px-8 px-4 py-3 bg-gradient-to-r from-yellow-400 to-orange-500 text-black rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 animate-bounce"
                   >
                     Start Meditation Free
                   </button>
@@ -100,7 +107,7 @@ function App() {
                     onClick={() => {
                       document.querySelector('.meditation-programs-section')?.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    className="px-8 py-3 bg-gradient-to-r from-purple-400 to-pink-500 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 animate-bounce"
+                    className="w-[70%] sm:w-auto px-8 py-3 bg-gradient-to-r from-purple-400 to-pink-500 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 animate-bounce"
                   >
                     Explore Programs
                   </button>

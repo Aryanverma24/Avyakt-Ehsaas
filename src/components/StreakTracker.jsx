@@ -45,7 +45,7 @@ export default function StreakTracker() {
       {/* 👇 Mobile view (only icon + number) */}
       <div className="flex items-center justify-center md:hidden">
         <span className="text-lg">🔥</span>
-        <span className="text-white text-base ml-1">{streak}</span>
+        <span className="text-gray-950 text-base ml-1">{streak}</span>
       </div>
     </div>
   );

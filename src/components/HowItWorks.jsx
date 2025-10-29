@@ -1,4 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 const steps = [
   {
@@ -31,6 +33,56 @@ const steps = [
   },
 ];
 
+const AnimatedCard = ({ step, index }) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.5, // Trigger when 50% of the element is in view
+    triggerOnce: true,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
+  const variants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20, // Start slightly below
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+        delay: index * 0.1
+      }
+    }
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={variants}
+      className={`bg-white/90 backdrop-blur-lg rounded-2xl p-4 sm:p-6 shadow-lg border border-slate-200 md:w-96 group-hover:shadow-xl transition-all duration-300 w-full mx-2 sm:mx-0 ${
+        index % 2 === 0 ? 'md:ml-8' : 'md:mr-8'
+      } flex flex-col items-center md:items-start`}>
+      <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center text-white text-xl sm:text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10 md:hidden mb-4`}>
+        {step.icon}
+        <div className="absolute -top-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-deepGreen text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold">
+          {step.step}
+        </div>
+      </div>
+      <h3 className="text-lg sm:text-xl font-semibold text-deepGreen mb-2">{step.title}</h3>
+      <p className="text-slate-600 text-sm sm:text-base">{step.description}</p>
+    </motion.div>
+  );
+};
+
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="py-12 bg-gradient-to-b from-indigo-50 to-purple-50 px-4 sm:px-6">
@@ -50,22 +102,15 @@ export default function HowItWorks() {
           {steps.map((step, index) => (
             <div key={index} className={`flex items-center justify-center md:justify-start ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} group`}>
               {/* Timeline Dot */}
-              <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center text-white text-xl sm:text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10 mx-auto md:mx-0 mb-4 md:mb-0 hidden md:flex`}>
+              <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center text-white text-xl sm:text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10 mx-auto -top-25 md:mx-0 mb-4 md:mb-0 hidden md:flex`}>
                 {step.icon}
-                <div className="absolute -top-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-deepGreen text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold hidden md:flex">
+                <div className="absolute -top-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-deepGreen text-orange-400 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold hidden md:flex">
                   {step.step}
                 </div>
               </div>
 
               {/* Content Card */}
-              <div className={`bg-white/90 backdrop-blur-lg rounded-2xl p-4 sm:p-6 shadow-lg border border-slate-200 md:w-96 group-hover:shadow-xl transition-all duration-300 w-full ${index % 2 === 0 ? 'md:ml-8' : 'md:mr-8'} flex flex-col items-center md:items-start`}>
-                <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center text-white text-xl sm:text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300 relative z-10 md:hidden mb-4`}>
-                  {step.icon}
-                  <div className="absolute -top-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-deepGreen text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold">{step.step}</div>
-                </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-deepGreen mb-2">{step.title}</h3>
-                <p className="text-slate-600 text-sm sm:text-base">{step.description}</p>
-              </div>
+              <AnimatedCard step={step} index={index} />
             </div>
           ))}
         </div>

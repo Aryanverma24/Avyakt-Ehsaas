@@ -40,7 +40,8 @@ export default function BreathingCircle() {
     <div className="flex flex-col items-center mt-8">
       <div className="relative w-32 h-32 mb-4">
         <div
-          className={`w-full h-full rounded-full bg-gradient-to-br from-blue-400 to-purple-500 transition-transform duration-2000 ${
+          className={`w-full h-full rounded-full bg-gradient-to-br from-[#4F46E5] via-[#6366F1] to-[#8B5CF6]
+ transition-transform duration-2000 ${
             phase === 'hold' ? 'opacity-50' : 'opacity-100'
           }`}
           style={{ transform: `scale(${scale})` }}
@@ -49,7 +50,7 @@ export default function BreathingCircle() {
           {getPhaseText()}
         </div>
       </div>
-      <p className="text-white/90 text-center">
+      <p className="text-black/90 text-center">
         Follow the breathing guide to relax and center your mind.
       </p>
     </div>

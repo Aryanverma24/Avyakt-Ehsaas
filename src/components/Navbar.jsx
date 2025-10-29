@@ -26,8 +26,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <div className={`text-2xl font-bold transition-colors duration-300 ${
-              isScrolled ? 'text-white' : 'text-white'
+            <div className={`text-gray-950 md::text-2xl  font-bold transition-colors duration-300 ${
+              isScrolled ? 'text-white' : 'text-gray-950'
             }`}>🌿 Avyakt Ehsaas</div>
           </div>
 
@@ -37,7 +37,7 @@ export default function Navbar() {
               href="#"
               onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })}
               className={`transition-colors duration-300 ${
-                isScrolled ? 'text-white hover:text-yellow-400' : 'text-white hover:text-yellow-400'
+                isScrolled ? 'text-white hover:text-yellow-400' : 'text-gray-950 hover:text-yellow-400'
               }`}
             >
               Home
@@ -46,7 +46,7 @@ export default function Navbar() {
               href="#"
               onClick={() => document.querySelector('.meditation-programs-section')?.scrollIntoView({ behavior: 'smooth' })}
               className={`transition-colors duration-300 ${
-                isScrolled ? 'text-white hover:text-yellow-400' : 'text-white hover:text-yellow-400'
+                isScrolled ? 'text-white hover:text-yellow-400' : 'text-gray-950 hover:text-yellow-400'
               }`}
             >
               Programs
@@ -55,7 +55,7 @@ export default function Navbar() {
               href="#"
               onClick={() => document.querySelector('.why-meditation-section')?.scrollIntoView({ behavior: 'smooth' })}
               className={`transition-colors duration-300 ${
-                isScrolled ? 'text-white hover:text-yellow-400' : 'text-white hover:text-yellow-400'
+                isScrolled ? 'text-white hover:text-yellow-400' : 'text-gray-950 hover:text-yellow-400'
               }`}
             >
               About
@@ -64,7 +64,7 @@ export default function Navbar() {
               href="#"
               onClick={() => document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })}
               className={`transition-colors duration-300 ${
-                isScrolled ? 'text-white hover:text-yellow-400' : 'text-white hover:text-yellow-400'
+                isScrolled ? 'text-white hover:text-yellow-400' : 'text-gray-950 hover:text-yellow-400'
               }`}
             >
               Contact
@@ -76,7 +76,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`focus:outline-none transition-colors duration-300 ${
-                isScrolled ? 'text-white hover:text-yellow-400' : 'text-white hover:text-yellow-400'
+                isScrolled ? 'text-white hover:text-yellow-400' : 'text-gray-950 hover:text-yellow-400'
               }`}
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -102,7 +102,7 @@ export default function Navbar() {
                 href="#"
                 onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })}
                 className={`block px-3 py-2 transition-colors duration-300 ${
-                  isScrolled ? 'text-white hover:text-yellow-400' : 'text-white hover:text-yellow-400'
+                  isScrolled ? 'text-white hover:text-yellow-400' : 'text-gray-950 hover:text-yellow-400'
                 }`}
               >
                 Home
@@ -111,7 +111,7 @@ export default function Navbar() {
                 href="#"
                 onClick={() => document.querySelector('.meditation-programs-section')?.scrollIntoView({ behavior: 'smooth' })}
                 className={`block px-3 py-2 transition-colors duration-300 ${
-                  isScrolled ? 'text-white hover:text-yellow-400' : 'text-white hover:text-yellow-400'
+                  isScrolled ? 'text-white hover:text-yellow-400' : 'text-gray-950 hover:text-yellow-400'
                 }`}
               >
                 Programs
@@ -120,7 +120,7 @@ export default function Navbar() {
                 href="#"
                 onClick={() => document.querySelector('.why-meditation-section')?.scrollIntoView({ behavior: 'smooth' })}
                 className={`block px-3 py-2 transition-colors duration-300 ${
-                  isScrolled ? 'text-white hover:text-yellow-400' : 'text-white hover:text-yellow-400'
+                  isScrolled ? 'text-white hover:text-yellow-400' : 'text-gray-950 hover:text-yellow-400'
                 }`}
               >
                 About
@@ -129,7 +129,7 @@ export default function Navbar() {
                 href="#"
                 onClick={() => document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })}
                 className={`block px-3 py-2 transition-colors duration-300 ${
-                  isScrolled ? 'text-white hover:text-yellow-400' : 'text-white hover:text-yellow-400'
+                  isScrolled ? 'text-white hover:text-yellow-400' : 'text-gray-950 hover:text-yellow-400'
                 }`}
               >
                 Contact
